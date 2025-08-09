@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Love, Labels & Identity — Mini-Poster Builder</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root{--accent:#800020;--ok:#1b7f3a;--muted:#6b7280;--line:#e5e7eb;--bg:#f7f5f3;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#222;padding:20px}
+  .wrap{max-width:980px;margin:auto;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 24px rgba(0,0,0,.08);padding:18px}
+  h1{margin:.2rem 0;color:var(--accent)}
+  .grid{display:grid;gap:12px}
+  @media(min-width:900px){.grid{grid-template-columns:2fr 1fr}}
+  .card{border:1px solid var(--line);border-radius:12px;background:#fcfcfc;padding:12px}
+  .badge{display:inline-block;background:#efe8ea;color:#3a2b2f;font-weight:700;font-size:.8rem;border-radius:999px;padding:2px 10px;margin-bottom:6px}
+  .row{margin:8px 0}
+  label{font-weight:700}
+  textarea{width:100%;min-height:70px;border:1px solid #ddd;border-radius:10px;padding:8px;font-size:1rem;background:#fff}
+  select,input[type="date"]{width:100%;padding:8px;border:1px solid #ddd;border-radius:10px;background:#fff}
+  .hint{color:var(--muted);font-size:.9rem}
+  .bar{height:10px;background:#eee;border-radius:999px;overflow:hidden}
+  .fill{height:100%;width:0;background:linear-gradient(90deg,#1b7f3a,#55c27d)}
+  .ok{color:var(--ok);font-weight:700}
+  .btn{border:0;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer}
+  .primary{background:var(--accent);color:#fff}
+  .ghost{background:#efe8ea;color:#3a2b2f}
+  .pill{display:inline-block;border:1px solid #ddd;border-radius:999px;padding:6px 10px;margin:4px 6px;background:#fff;font-size:.95rem;cursor:pointer}
+  .quote{border-left:4px solid var(--accent);background:#fff;padding:8px 10px;margin:8px 0;border-radius:8px;cursor:pointer}
+  .flex{display:flex;gap:10px;flex-wrap:wrap}
+  .timer{font-variant-numeric:tabular-nums;font-weight:800}
+  .small{font-size:.9rem}
+  .teacher{display:none;margin-top:10px}
+  .teacher .model-block{background:#fff;border:1px dashed #ccc;border-radius:12px;padding:10px}
+  .model-hdr{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<section class="wrap" id="poster">
+  <header style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+    <h1>Love, Labels & Identity — Mini-Poster Builder</h1>
+    <div>
+      <span class="badge">Timer</span>
+      <span class="timer" id="timer">15:00</span>
+      <button class="btn ghost" id="start">Start</button>
+      <button class="btn ghost" id="resetT">Reset</button>
+    </div>
+  </header>
+
+  <!-- Poster header info -->
+  <div class="card">
+    <span class="badge">Poster header</span>
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:10px">
+      <div class="row">
+        <label for="groupName">Group</label>
+        <select id="groupName">
+          <option>Group 1</option>
+          <option>Group 2</option>
+          <option>Group 3</option>
+          <option>Group 4</option>
+          <option>Group 5</option>
+          <option>Group 6</option>
+        </select>
+      </div>
+      <div class="row">
+        <label for="dateInput">Date</label>
+        <input id="dateInput" type="date" />
+      </div>
+    </div>
+    <p class="hint">These will appear on the printed poster.</p>
+  </div>
+
+  <!-- TEACHER CONTROLS -->
+  <div class="card">
+    <div class="model-hdr">
+      <div>
+        <span class="badge">Teacher</span>
+        <span class="hint">Password required to reveal model</span>
+      </div>
+      <div class="flex">
+        <button class="btn ghost" id="showModel">Teacher: Show model</button>
+        <button class="btn ghost" id="hideModel" style="display:none">Hide model</button>
+      </div>
+    </div>
+    <div id="teacherArea" class="teacher" aria-hidden="true">
+      <div class="model-block">
+        <span class="badge">Model answer (B1, concise)</span>
+        <p><b>1) Plato’s idea (our words)</b><br>
+        Plato says people were once whole and then split. Romantic love is the search for a “missing half” that makes us feel whole again.</p>
+
+        <p><b>2) R&amp;J quote(s) that prove it</b><br>
+        “Juliet is the sun.” → She gives life and meaning to Romeo.<br>
+        “A rose by any other word would smell as sweet.” → Labels (names) do not change true value.</p>
+
+        <p><b>3) Modern teenage example</b><br>
+        On social media, people judge by labels (school, family, follower count). Two teens may hide their relationship because others’ opinions feel stronger than their own feelings.</p>
+
+        <p><b>4) Opinions</b><br>
+        I think love can help people feel complete. However, in my opinion, labels can make relationships harder because identity is more than a name.</p>
+
+        <div class="flex" style="margin-top:8px">
+          <button class="btn primary" id="copyAll">Copy model into editor</button>
+          <button class="btn ghost" data-copy="plato">Copy 1) to editor</button>
+          <button class="btn ghost" data-copy="quotes">Copy 2) to editor</button>
+          <button class="btn ghost" data-copy="modern">Copy 3) to editor</button>
+          <button class="btn ghost" data-copy="opinions">Copy 4) to editor</button>
+        </div>
+        <p class="hint small" style="margin-top:6px">Use to demonstrate structure. Encourage students to adapt and improve, not copy.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <!-- LEFT: Editor -->
+    <div class="card" id="posterArea">
+      <span class="badge">Your Poster (all 4 parts are required)</span>
+
+      <div class="row">
+        <label for="plato">1) Plato’s idea (our words)</label>
+        <textarea id="plato" placeholder="e.g., Plato says people look for a 'missing half' to feel whole again."></textarea>
+        <div class="hint">Aim for 25–40 words.</div>
+      </div>
+
+      <div class="row">
+        <label for="quotes">2) R&amp;J quote(s) that prove it</label>
+        <textarea id="quotes" placeholder="Paste 1–2 quotes from the bank → explain briefly why each fits."></textarea>
+        <div class="hint">Max ~40 words total. Choose carefully; evidence beats quantity.</div>
+      </div>
+
+      <div class="row">
+        <label for="modern">3) Modern teenage example</label>
+        <textarea id="modern" placeholder="e.g., Use Puppy Love or a real-life school/social media example about labels and identity."></textarea>
+        <div class="hint">Focus on labels/identity today (family name, status, school, online image).</div>
+      </div>
+
+      <div class="row">
+        <label for="opinions">4) Opinions (use starters)</label>
+        <textarea id="opinions" placeholder="I think… In my opinion… I see it differently because…"></textarea>
+        <div class="hint">Include at least two opinion frames.</div>
+      </div>
+
+      <div class="row">
+        <span class="badge">Completion</span>
+        <div class="bar"><div class="fill" id="fill"></div></div>
+        <div id="check" class="hint">Fill all four parts to get the green light.</div>
+      </div>
+
+      <div class="row flex">
+        <button class="btn primary" id="print">Print / Save this Poster</button>
+        <button class="btn ghost" id="clear">Clear</button>
+      </div>
+    </div>
+
+    <!-- RIGHT: Supports -->
+    <aside>
+      <div class="card">
+        <span class="badge">Opinion starters</span>
+        <div class="flex">
+          <span class="pill">I think…</span>
+          <span class="pill">In my opinion…</span>
+          <span class="pill">I see it differently because…</span>
+          <span class="pill">This shows that…</span>
+          <span class="pill">However, others might say…</span>
+          <span class="pill">For example…</span>
+        </div>
+        <p class="hint">Click to copy.</p>
+      </div>
+
+      <div class="card">
+        <span class="badge">Balcony scene — quote bank</span>
+        <div class="quote">“Juliet is the sun.” — warmth / life / central (connects to feeling “whole”).</div>
+        <div class="quote">“Kill the envious moon.” — contrasts jealousy/coldness with Juliet’s warmth.</div>
+        <div class="quote">“Two of the fairest stars… twinkle.” — she outshines others; idealised love.</div>
+        <div class="quote">“That I were a glove… to touch that cheek!” — desire for closeness.</div>
+        <div class="quote">“A rose by any other word would smell as sweet.” — labels ≠ essence.</div>
+        <p class="hint small">Use only what truly proves your point (love • labels • identity).</p>
+      </div>
+
+      <div class="card">
+        <span class="badge">Word targets</span>
+        <div class="flex">
+          <span class="pill">soulmate</span>
+          <span class="pill">longing</span>
+          <span class="pill">whole/complete</span>
+          <span class="pill">jealous/jealousy</span>
+          <span class="pill">impulsive</span>
+          <span class="pill">identity</span>
+          <span class="pill">label</span>
+          <span class="pill">meaningful</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<script>
+(function(){
+  // Copy-on-click for supports
+  document.querySelectorAll('.pill, .quote').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      navigator.clipboard.writeText(el.innerText.replace(/—.*$/,'').trim());
+      el.style.outline='2px solid #1b7f3a';
+      setTimeout(()=>el.style.outline='none',400);
+    });
+  });
+
+  // Timer (15:00)
+  let t=900, iv=null;
+  const timer = document.getElementById('timer'), startBtn=document.getElementById('start'), resetT=document.getElementById('resetT');
+  function fmt(s){const m=Math.floor(s/60), ss=String(s%60).padStart(2,'0'); return m+":"+ss;}
+  function tick(){ t--; timer.textContent=fmt(t); if(t<=0){ clearInterval(iv); iv=null; alert("Time! Wrap up your poster."); } }
+  startBtn.addEventListener('click', ()=>{ if(iv) return; iv=setInterval(tick,1000); });
+  resetT.addEventListener('click', ()=>{ clearInterval(iv); iv=null; t=900; timer.textContent=fmt(t); });
+
+  // Completion meter
+  const ids=['plato','quotes','modern','opinions'], fill=document.getElementById('fill'), check=document.getElementById('check');
+  ids.forEach(id=>{
+    document.getElementById(id).addEventListener('input', ()=>{
+      const filled = ids.filter(i=>document.getElementById(i).value.trim().length>8).length;
+      const pct = Math.round((filled/ids.length)*100);
+      fill.style.width=pct+'%';
+      check.innerHTML = (filled===4) ? '<span class="ok">Green light ✔ — all parts present.</span>' : 'Fill all four parts to get the green light.';
+    });
+  });
+
+  // Clear
+  document.getElementById('clear').addEventListener('click',()=>{
+    ids.forEach(i=>document.getElementById(i).value=''); fill.style.width='0%'; check.textContent='Fill all four parts to get the green light.';
+  });
+
+  // Teacher password + model copy
+  const teacherArea = document.getElementById('teacherArea');
+  const showBtn = document.getElementById('showModel');
+  const hideBtn = document.getElementById('hideModel');
+  showBtn.addEventListener('click',()=>{
+    const pw = prompt('Enter teacher password:');
+    if(pw === 'teacher'){
+      teacherArea.style.display='block';
+      teacherArea.setAttribute('aria-hidden','false');
+      hideBtn.style.display='inline-block';
+      showBtn.style.display='none';
+    }else if(pw!==null){ alert('Incorrect password.'); }
+  });
+  hideBtn.addEventListener('click',()=>{
+    teacherArea.style.display='none';
+    teacherArea.setAttribute('aria-hidden','true');
+    hideBtn.style.display='none';
+    showBtn.style.display='inline-block';
+  });
+
+  const model = {
+    plato: "Plato says people were once whole and then split. Romantic love is the search for a “missing half” that makes us feel whole again.",
+    quotes: "“Juliet is the sun.” → She gives life and meaning to Romeo.\n“A rose by any other word would smell as sweet.” → Labels do not change true value.",
+    modern: "On social media, people judge by labels (school, family, follower count). Two teens may hide their relationship because others’ opinions feel stronger than their own feelings.",
+    opinions: "I think love can help people feel complete. However, in my opinion, labels can make relationships harder because identity is more than a name."
+  };
+  function updateMeter(){
+    const filled = ids.filter(i=>document.getElementById(i).value.trim().length>8).length;
+    const pct = Math.round((filled/ids.length)*100);
+    fill.style.width=pct+'%';
+    check.innerHTML = (filled===4) ? '<span class="ok">Green light ✔ — all parts present.</span>' : 'Fill all four parts to get the green light.';
+  }
+  document.getElementById('copyAll').addEventListener('click',()=>{ ids.forEach(id=>document.getElementById(id).value=model[id]); updateMeter(); });
+  document.querySelectorAll('[data-copy]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const id = btn.getAttribute('data-copy');
+      document.getElementById(id).value=model[id]; updateMeter();
+    });
+  });
+
+  // Print ONLY the poster (header + 4 fields + group/date) via hidden iframe (popup-safe)
+  document.getElementById('print').addEventListener('click', () => {
+    const group = (document.getElementById('groupName')?.value || 'Group');
+    const date  = (document.getElementById('dateInput')?.value || '');
+    const p1 = document.getElementById('plato').value.trim();
+    const p2 = document.getElementById('quotes').value.trim();
+    const p3 = document.getElementById('modern').value.trim();
+    const p4 = document.getElementById('opinions').value.trim();
+
+    if (!p1 || !p2 || !p3 || !p4) {
+      const ok = confirm("Some sections look empty. Print anyway?");
+      if (!ok) return;
+    }
+
+    const html = `<!DOCTYPE html><html><head><meta charset="utf-8">
+    <title>${escapeHTML(group)} — Mini-Poster</title>
+    <style>
+      body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#111;margin:24px}
+      h1{margin:0 0 4px;color:#800020}
+      .meta{color:#333;margin:0 0 16px}
+      .block{margin:12px 0 16px;padding:10px;border:1px solid #ddd;border-radius:10px;background:#fcfcfc}
+      .label{font-weight:700;margin-bottom:6px}
+      .small{font-size:.9rem;color:#555}
+      @page{size:auto;margin:16mm}
+    </style>
+    </head><body>
+      <h1>Love, Labels & Identity — Mini-Poster</h1>
+      <p class="meta"><b>${escapeHTML(group)}</b>${date ? " • " + new Date(date).toLocaleDateString() : ""}</p>
+
+      <div class="block"><div class="label">1) Plato’s idea (our words)</div><div>${escapeHTML(p1).replace(/\n/g,"<br>")}</div></div>
+      <div class="block"><div class="label">2) R&J quote(s) that prove it</div><div>${escapeHTML(p2).replace(/\n/g,"<br>")}</div></div>
+      <div class="block"><div class="label">3) Modern teenage example</div><div>${escapeHTML(p3).replace(/\n/g,"<br>")}</div></div>
+      <div class="block"><div class="label">4) Opinions</div><div>${escapeHTML(p4).replace(/\n/g,"<br>")}</div></div>
+
+      <p class="small">Printed from the class builder (poster-only output).</p>
+      <script>window.onload=()=>window.print();<\/script>
+    </body></html>`;
+
+    const iframe = document.createElement('iframe');
+    iframe.style.position = 'fixed';
+    iframe.style.right = '0'; iframe.style.bottom = '0';
+    iframe.style.width = '0'; iframe.style.height = '0';
+    iframe.style.border = '0'; iframe.style.visibility = 'hidden';
+    document.body.appendChild(iframe);
+
+    const doc = iframe.contentWindow.document;
+    doc.open(); doc.write(html); doc.close();
+
+    setTimeout(() => {
+      iframe.contentWindow.focus();
+      iframe.contentWindow.print();
+      setTimeout(() => document.body.removeChild(iframe), 500);
+    }, 50);
+  });
+
+  // helper for safe HTML
+  function escapeHTML(s){
+    return s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  }
+})();
+</script>
+</body>
+</html>

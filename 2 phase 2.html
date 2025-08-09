@@ -1,0 +1,202 @@
+<!-- ==== CODE BREAKER: SHAKESPEARE MATCHING (Group Mode, Instant Feedback) ==== -->
+<section id="code-breaker" style="margin:32px auto; max-width:900px;">
+  <style>
+    #code-breaker * { box-sizing: border-box; }
+    #code-breaker .cb-wrap{
+      background:#fff; border-radius:14px; padding:18px 18px 8px;
+      box-shadow:0 8px 20px rgba(0,0,0,.08); border:1px solid #eee;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    #code-breaker h2{
+      margin:0 0 6px; font-family:'Cormorant Garamond', serif; font-size:1.8rem; color:#800020;
+    }
+    #code-breaker .sub{ color:#4b5563; margin:0 0 12px; }
+    #code-breaker .cb-grid{ display:grid; grid-template-columns:1fr; gap:12px; }
+    @media (min-width:800px){ #code-breaker .cb-grid{ grid-template-columns:1fr 1fr; } }
+    #code-breaker .card{
+      border:2px solid #eee; border-radius:12px; padding:12px; background:#fafafa;
+      transition: background .15s ease, border-color .15s ease;
+    }
+    /* FULL green/red feedback */
+    #code-breaker .card.right{ background:#d5f5df; border-color:#1b7f3a; }
+    #code-breaker .card.wrong{ background:#ffd6dc; border-color:#b00020; }
+    #code-breaker .orig{ font-style:italic; margin:0 0 6px; }
+    #code-breaker .trans{ margin:0 0 10px; color:#1f2937; }
+    #code-breaker .qrow{ display:flex; align-items:center; gap:8px; margin-top:6px; }
+    #code-breaker select{ width:100%; padding:8px; border-radius:10px; border:1px solid #d1d5db; }
+    #code-breaker .fb{ font-size:.95rem; margin-top:6px; min-height:1.2em; font-weight:600; }
+    #code-breaker .fb.ok{ color:#135c2b; }
+    #code-breaker .fb.no{ color:#7a0014; }
+    #code-breaker .controls{
+      display:flex; justify-content:space-between; align-items:center; margin-top:14px; padding-top:10px; border-top:1px dashed #ddd;
+    }
+    #code-breaker .btn{
+      border:0; border-radius:10px; padding:9px 14px; cursor:pointer; background:#800020; color:#fff; font-weight:600;
+    }
+    #code-breaker .legend{ font-size:.95rem; color:#374151; margin:6px 0 12px; }
+    #code-breaker .tiny{ font-size:.88rem; color:#6b7280; margin-top:8px; }
+  </style>
+
+  <div class="cb-wrap">
+    <h2>Code Breaker — Balcony Scene (6′)</h2>
+    <p class="sub">Whole group works together. Read each extract (original + modern) and select the <b>best meaning</b>. The card turns <b>green</b> (correct) or <b>red</b> (try again) instantly.</p>
+
+    <div class="legend"><b>Goal:</b> Get all five cards green. Use the lines as evidence.</div>
+
+    <div class="cb-grid" id="cbGrid">
+      <!-- Card 1 -->
+      <div class="card" data-answer="sun">
+        <p class="orig">“But, soft! What light through yonder window breaks? It is the east, and Juliet is the sun.”</p>
+        <p class="trans">Juliet is compared to the <b>sun</b> — bringing light, warmth, and life.</p>
+        <div class="qrow">
+          <label for="sel1"><b>Meaning:</b></label>
+          <select id="sel1" aria-label="Meaning for Juliet is the sun">
+            <option value="">— choose —</option>
+            <option value="sun">Juliet’s beauty and life-giving presence</option>
+            <option value="moon">Jealousy / cold purity</option>
+            <option value="name">Labels don’t define the person</option>
+            <option value="stars">Her brightness outshines others</option>
+          </select>
+        </div>
+        <div class="fb" id="fb1" aria-live="polite"></div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card" data-answer="moon">
+        <p class="orig">“Arise, fair sun, and kill the envious moon, who is already sick and pale with grief…”</p>
+        <p class="trans">The <b>moon</b> represents jealous, pale, cold love contrasted with Juliet’s warmth.</p>
+        <div class="qrow">
+          <label for="sel2"><b>Meaning:</b></label>
+          <select id="sel2" aria-label="Meaning for envious moon">
+            <option value="">— choose —</option>
+            <option value="rose">Value stays the same despite names</option>
+            <option value="moon">Jealous, inferior light next to Juliet</option>
+            <option value="name">Family names as obstacles</option>
+            <option value="glove">Desire for physical closeness</option>
+          </select>
+        </div>
+        <div class="fb" id="fb2" aria-live="polite"></div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card" data-answer="stars">
+        <p class="orig">“Two of the fairest stars in all the heaven… do entreat her eyes to twinkle in their spheres…”</p>
+        <p class="trans">Her <b>eyes</b> shine like <b>stars</b> — she outshines the night sky.</p>
+        <div class="qrow">
+          <label for="sel3"><b>Meaning:</b></label>
+          <select id="sel3" aria-label="Meaning for fairest stars">
+            <option value="">— choose —</option>
+            <option value="glove">Wish to touch / be near</option>
+            <option value="name">Names don’t equal identity</option>
+            <option value="stars">Her brilliance surpasses others</option>
+            <option value="moon">Cold distance</option>
+          </select>
+        </div>
+        <div class="fb" id="fb3" aria-live="polite"></div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card" data-answer="glove">
+        <p class="orig">“That I were a glove upon that hand, that I might touch that cheek!”</p>
+        <p class="trans">The <b>glove</b> symbolizes a wish for closeness; an innocent image of desire.</p>
+        <div class="qrow">
+          <label for="sel4"><b>Meaning:</b></label>
+          <select id="sel4" aria-label="Meaning for glove">
+            <option value="">— choose —</option>
+            <option value="glove">Desire for proximity / intimacy</option>
+            <option value="sun">Life-giving warmth</option>
+            <option value="rose">Value beyond naming</option>
+            <option value="stars">She stands above others</option>
+          </select>
+        </div>
+        <div class="fb" id="fb4" aria-live="polite"></div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="card" data-answer="rose">
+        <p class="orig">“That which we call a rose by any other word would smell as sweet.”</p>
+        <p class="trans"><b>Names/labels</b> don’t change a thing’s true value.</p>
+        <div class="qrow">
+          <label for="sel5"><b>Meaning:</b></label>
+          <select id="sel5" aria-label="Meaning for rose">
+            <option value="">— choose —</option>
+            <option value="moon">Jealousy</option>
+            <option value="rose">Essential value beyond labels</option>
+            <option value="sun">New beginning / dawn</option>
+            <option value="glove">Physical closeness</option>
+          </select>
+        </div>
+        <div class="fb" id="fb5" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div><b>Greens:</b> <span id="cbScore">0</span> / <span id="cbTotal">5</span></div>
+      <button class="btn" id="cbReset" type="button" aria-label="Reset matching">Reset</button>
+    </div>
+
+    <p class="tiny"><b>Note:</b> Same 5 extracts for all groups → faster comparison and whole-class check.</p>
+  </div>
+
+  <script>
+    (function(){
+      const cards = Array.from(document.querySelectorAll('#code-breaker .card'));
+      const scoreEl = document.getElementById('cbScore');
+      const totalEl = document.getElementById('cbTotal');
+      const btnReset = document.getElementById('cbReset');
+      totalEl.textContent = cards.length;
+
+      function setState(card, state, msgEl, msg){
+        card.classList.remove('right','wrong');
+        if(state === 'right') card.classList.add('right');
+        if(state === 'wrong') card.classList.add('wrong');
+        msgEl.textContent = msg || '';
+        msgEl.className = 'fb ' + (state === 'right' ? 'ok' : 'no');
+        updateScore();
+      }
+
+      function check(card){
+        const sel = card.querySelector('select');
+        const msg = card.querySelector('.fb');
+        const correct = card.dataset.answer;
+        const val = sel.value;
+        if(!val){
+          card.classList.remove('right','wrong');
+          msg.textContent = '';
+          msg.className = 'fb';
+          updateScore();
+          return;
+        }
+        if(val === correct){
+          setState(card, 'right', msg, '✔️ Correct — well spotted!');
+        } else {
+          setState(card, 'wrong', msg, '✖️ Not quite — reread the line and try a closer meaning.');
+        }
+      }
+
+      function updateScore(){
+        const greens = cards.filter(c => c.classList.contains('right')).length;
+        scoreEl.textContent = greens.toString();
+      }
+
+      // live, per-change feedback (full green/red)
+      cards.forEach(card => {
+        const sel = card.querySelector('select');
+        sel.addEventListener('change', () => check(card));
+      });
+
+      btnReset.addEventListener('click', () => {
+        cards.forEach(card => {
+          const sel = card.querySelector('select');
+          const fb = card.querySelector('.fb');
+          sel.value = '';
+          card.classList.remove('right','wrong');
+          fb.textContent = '';
+          fb.className = 'fb';
+        });
+        scoreEl.textContent = '0';
+      });
+    })();
+  </script>
+</section>
+<!-- ==== /CODE BREAKER ==== -->

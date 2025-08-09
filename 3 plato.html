@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Plato on Love — Vocabulary Match (Excerpt)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root{
+    --accent:#800020; --ok:#1b7f3a; --no:#b00020;
+    --ink:#222; --muted:#4b5563; --line:#eee;
+    --bg:#f7f5f3; --card:#ffffff;
+  }
+  *{ box-sizing:border-box; }
+  body{ margin:0; padding:24px; font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; background:var(--bg); color:var(--ink); display:flex; justify-content:center; }
+  .wrap{ width:100%; max-width:900px; background:var(--card); border:1px solid var(--line); border-radius:14px; box-shadow:0 8px 20px rgba(0,0,0,.08); padding:18px 18px 8px; }
+  h1{ margin:0 0 6px; color:var(--accent); font-size:1.8rem; }
+  .sub{ color:var(--muted); margin:0 0 12px; }
+  .card{ background:#fcfcfc; border:1px solid var(--line); border-radius:12px; padding:12px; margin-top:10px; }
+  .badge{ display:inline-block; font-size:.8rem; font-weight:700; padding:2px 8px; border-radius:999px; background:#e7dfe2; color:#3a2b2f; margin-bottom:6px; }
+
+  /* Matching */
+  .grid{ display:grid; grid-template-columns:1fr; gap:10px; }
+  @media (min-width:860px){ .grid{ grid-template-columns:1fr 1fr; } }
+  .row{ background:#fafafa; border:2px solid var(--line); border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:8px; transition:background .15s ease, border-color .15s ease; }
+  .row.right{ background:#d5f5df; border-color:var(--ok); }
+  .row.wrong{ background:#ffd6dc; border-color:var(--no); }
+  .term{ font-weight:700; }
+  select{ width:100%; padding:8px; border-radius:10px; border:1px solid #d1d5db; background:#fff; }
+  .fb{ font-size:.95rem; min-height:1.2em; }
+  .fb.ok{ color:#135c2b; font-weight:600; }
+  .fb.no{ color:#7a0014; font-weight:600; }
+
+  /* Controls */
+  .controls{ display:flex; gap:10px; align-items:center; justify-content:space-between; margin-top:14px; padding-top:10px; border-top:1px dashed #ddd; }
+  .btn{ border:0; border-radius:10px; padding:9px 14px; cursor:pointer; background:var(--accent); color:#fff; font-weight:700; }
+
+  /* Writing */
+  textarea{ width:100%; padding:8px; border-radius:10px; border:1px solid #d1d5db; background:#fff; }
+  .hint{ color:#6b7280; font-size:.9rem; }
+</style>
+</head>
+<body>
+<div class="wrap" id="plato-vocab">
+  <h1>Plato on Love — Vocabulary Match (Excerpt)</h1>
+  <p class="sub">Match each <b>term</b> to the best <b>definition</b>. Instant feedback: the whole row turns <b>green</b> (correct) or <b>red</b> (try again). Then write <b>3 sentences</b> using different terms.</p>
+
+  <!-- Definitions bank (numbers students choose from) -->
+  <div class="card" aria-labelledby="defs-title">
+    <span class="badge" id="defs-title">Definitions Bank</span>
+    <ol>
+      <li>love can make us feel complete again</li>
+      <li>to reach your full self</li>
+      <li>the other part of you that makes you feel whole</li>
+      <li>the person who fits you perfectly</li>
+      <li>an old story that explains an idea</li>
+      <li>to cut something into two parts</li>
+      <li>wanting something very strongly</li>
+      <li>love between partners</li>
+      <li>a tiring mix of strong feelings</li>
+      <li>to give life purpose</li>
+      <li>being alone / feeling pain</li>
+      <li>nature’s way to make us have children</li>
+    </ol>
+    <p class="hint">Terms are taken from the Plato excerpt of the TED-Ed video.</p>
+  </div>
+
+  <!-- Matching rows injected here -->
+  <div class="grid" id="matchGrid" aria-live="polite"></div>
+
+  <div class="controls">
+    <div><b>Greens:</b> <span id="pvScore">0</span> / <span id="pvTotal">12</span></div>
+    <button class="btn" id="pvReset" type="button" aria-label="Reset matching">Reset</button>
+  </div>
+
+  <!-- Writing for ALL groups -->
+  <div class="card">
+    <span class="badge">All Groups — Write 3 Sentences</span>
+    <p>Use <b>three different terms</b> (from the list above) to write <b>three original sentences</b>. You may refer to <i>Romeo &amp; Juliet</i>, the trailer, or real life.</p>
+    <div style="display:grid; gap:10px; grid-template-columns:1fr; margin-top:8px;">
+      <textarea placeholder="Sentence 1…"></textarea>
+      <textarea placeholder="Sentence 2…"></textarea>
+      <textarea placeholder="Sentence 3…"></textarea>
+    </div>
+    <p class="hint">B1 target: clear S+V+O; 10–15 words per sentence.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  // TERMS from the Plato excerpt (NOTE: "disguise for sexual desire" is intentionally NOT included)
+  const terms = [
+    { t: "be whole / whole again", a: 1 },
+    { t: "become complete", a: 2 },
+    { t: "missing half", a: 3 },
+    { t: "soulmate", a: 4 },
+    { t: "myth / Aristophanes’ story", a: 5 },
+    { t: "slice in two", a: 6 },
+    { t: "longing / to long for", a: 7 },
+    { t: "romantic love", a: 8 },
+    { t: "emotional wringer", a: 9 },
+    { t: "make life meaningful", a: 10 },
+    { t: "loneliness / suffering", a: 11 },
+    { t: "trick of biology / procreate", a: 12 }
+  ];
+
+  const defs = [
+    "love can make us feel complete again",     //1
+    "to reach your full self",                  //2
+    "the other part of you that makes you feel whole", //3
+    "the person who fits you perfectly",        //4
+    "an old story that explains an idea",       //5
+    "to cut something into two parts",          //6
+    "wanting something very strongly",          //7
+    "love between partners",                    //8
+    "a tiring mix of strong feelings",          //9
+    "to give life purpose",                     //10
+    "being alone / feeling pain",               //11
+    "nature’s way to make us have children"     //12
+  ];
+
+  const grid = document.getElementById('matchGrid');
+  const totalEl = document.getElementById('pvTotal');
+  const scoreEl = document.getElementById('pvScore');
+  const resetBtn = document.getElementById('pvReset');
+  totalEl.textContent = terms.length.toString();
+
+  // Build matching rows with instant feedback
+  terms.forEach((item, idx) => {
+    const row = document.createElement('div');
+    row.className = 'row';
+    row.dataset.answer = String(item.a);
+
+    const term = document.createElement('div');
+    term.className = 'term';
+    term.textContent = (idx+1) + '. ' + item.t;
+
+    const select = document.createElement('select');
+    select.setAttribute('aria-label', 'Definition for ' + item.t);
+    const blank = document.createElement('option');
+    blank.value = '';
+    blank.textContent = '— choose definition —';
+    select.appendChild(blank);
+
+    defs.forEach((d, i) => {
+      const opt = document.createElement('option');
+      opt.value = String(i+1);
+      opt.textContent = (i+1) + '. ' + d;
+      select.appendChild(opt);
+    });
+
+    const fb = document.createElement('div');
+    fb.className = 'fb';
+
+    row.appendChild(term);
+    row.appendChild(select);
+    row.appendChild(fb);
+    grid.appendChild(row);
+
+    select.addEventListener('change', () => {
+      const correct = row.dataset.answer;
+      const val = select.value;
+      row.classList.remove('right','wrong');
+
+      if(!val){
+        fb.textContent = '';
+        fb.className = 'fb';
+        updateScore();
+        return;
+      }
+      if(val === correct){
+        row.classList.add('right');
+        fb.className = 'fb ok';
+        fb.textContent = '✔️ Correct';
+      } else {
+        row.classList.add('wrong');
+        fb.className = 'fb no';
+        fb.textContent = '✖️ Try again';
+      }
+      updateScore();
+    });
+  });
+
+  function updateScore(){
+    const greens = Array.from(document.querySelectorAll('.row.right')).length;
+    scoreEl.textContent = greens.toString();
+  }
+
+  resetBtn.addEventListener('click', () => {
+    Array.from(document.querySelectorAll('.row')).forEach(r => {
+      r.classList.remove('right','wrong');
+      const sel = r.querySelector('select');
+      const fb = r.querySelector('.fb');
+      if(sel) sel.value = '';
+      if(fb){ fb.textContent = ''; fb.className = 'fb'; }
+    });
+    scoreEl.textContent = '0';
+  });
+})();
+</script>
+</body>
+</html>
