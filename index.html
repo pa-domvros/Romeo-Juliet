@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Romeo and Juliet: The Balcony Scene</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@1&amp;family=Great+Vibes&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .title-container {
+            text-align: center;
+            margin: 40px auto 20px auto;
+            padding: 0 20px;
+        }
+
+        .title-container h1 {
+            font-family: 'Great Vibes', cursive;
+            font-weight: normal;
+            font-size: 4.5em;
+            margin: 0;
+            color: #800020;
+        }
+
+        .title-container .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.2em;
+            margin: 8px 0;
+            color: #444;
+            line-height: 1.3;
+        }
+
+        #video-container {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 800px;
+            border: 15px solid #800020;
+            box-sizing: border-box;
+        }
+
+        video {
+            width: 100%;
+        }
+
+        #subtitles {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            min-height: 5em;
+        }
+
+        .original-text,
+        .translation-text {
+            margin-bottom: 10px;
+        }
+
+        .original-text {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<section style="background-color: #fff8e7; padding: 20px; border: 2px solid #d2691e; border-radius: 10px; margin-bottom: 20px;">
+<h2 style="text-align:center;">💖 Welcome to Our Lesson: Love, Labels &amp; Teenage Relationships 💬</h2>
+<p>Hey everyone! 👋 Have you heard of the story of <i>Romeo &amp; Juliet</i>  that William Shakespeare wrote about? Today, we’re going to explore <strong>love</strong>, <strong>labels</strong>, and <strong>identity</strong> through both classic and modern stories. 
+     We’ll watch videos 🎥, talk in groups 🗣️, share ideas 💡, and create something together 🎨. 
+     You’ll be working in <strong>groups of 5</strong>, and we’ll move through activities step-by-step.</p>
+<p><strong>Remember:</strong> Try to speak in <strong>English</strong> as much as you can! 
+     Your opinion matters, so share it confidently. Let’s make this fun, thoughtful, and creative. ✨</p>
+</section>
+<div class="title-container">
+<h1>The Balcony Scene</h1>
+<p class="subtitle">From William Shakespeare's play <em>Romeo and Juliet</em> (Act 2, Scene 2)</p>
+<p class="subtitle">Performed by Karen Fishwick and Bally Gill in 2018 at the Royal Shakespeare Company (RSC)</p>
+<p class="subtitle">Modern English translation, Panagiotis Domvros, English and Drama Teacher</p>
+</div>
+<div id="video-container">
+<video controls="" id="romeo-video">
+<source src="Romeo.mp4" type="video/mp4"/>
+            Your browser does not support the video tag.
+        </video>
+</div>
+<div id="subtitles">
+<p class="original-text"></p>
+<p class="translation-text"></p>
+</div>
+<script>
+        const video = document.getElementById('romeo-video');
+        const originalTextElement = document.querySelector('.original-text');
+        const translationTextElement = document.querySelector('.translation-text');
+        
+        const subtitles = [
+            {
+                start: 2, end: 14,
+                original: "[Romeo] But, soft! What light through yonder window breaks? It is the east and Juliet is the sun.",
+                translation: "[Romeo] But wait! What light is breaking through that window? It is the east, and Juliet is the sun."
+            },
+            {
+                start: 15, end: 26,
+                original: "[Romeo] Arise, fair sun, and kill the envious moon, who is already sick and pale with grief that thou her maid art far more fair than she.",
+                translation: "[Romeo] Rise, beautiful sun, and kill the jealous moon, who is already sick and pale with sadness because you, her attendant, are far more beautiful than she is."
+            },
+            {
+                start: 27, end: 37,
+                original: "[Romeo] Be not her maid, since she is envious. Her vestal livery is but sick and green and none but fools do wear it. Cast it off.",
+                translation: "[Romeo] Don't be her attendant, since she is jealous. Her virgin's uniform is sickly and pale, and only fools wear it. Take it off."
+            },
+            {
+                start: 38, end: 48,
+                original: "[Romeo] It is my lady, O, it is my love! O, that she knew she were!",
+                translation: "[Romeo] It is my lady, Oh, it is my love! Oh, if only she knew she was!"
+            },
+            {
+                start: 49, end: 56,
+                original: "[Romeo] She speaks yet she says nothing. What of that? Her eye discourses. I will answer it.",
+                translation: "[Romeo] She's speaking, but she isn't saying anything. What about it? Her eyes are speaking. I will answer them."
+            },
+            {
+                start: 57, end: 67,
+                original: "[Romeo] I am too bold. 'Tis not to me speaks.",
+                translation: "[Romeo] I am too bold. She is not speaking to me."
+            },
+            {
+                start: 68, end: 74,
+                original: "[Romeo] Two of the fairest stars in all the heaven, having some business, do entreat her eyes to twinkle in their spheres till they return.",
+                translation: "[Romeo] Two of the most beautiful stars in the sky, needing to be elsewhere, have asked her eyes to sparkle in their places until they get back."
+            },
+            {
+                start: 75, end: 82,
+                original: "[Romeo] What if her eyes were there, they in her head? The brightness of her cheek would shame those stars.",
+                translation: "[Romeo] What if her eyes were in the sky, and the stars were in her head? The brightness of her cheeks would make those stars look shameful."
+            },
+            {
+                start: 83, end: 90,
+                original: "[Romeo] See, how she leans a cheek upon her hand! That I were a glove upon that hand that I might touch that cheek!",
+                translation: "[Romeo] Look how she leans her cheek on her hand! Oh, I wish I were a glove on that hand so I could touch that cheek!"
+            },
+            {
+                start: 91, end: 91,
+                original: "[Juliet] Ay me.",
+                translation: "[Juliet] Oh, my."
+            },
+            {
+                start: 92, end: 114,
+                original: "[Romeo] She speaks! O, speak again, bright angel, for thou art as glorious to this night being o'er my head as is a winged messenger of heaven...",
+                translation: "[Romeo] She speaks! Oh, speak again, bright angel, because you are as glorious to this night, being above my head, as an angel from heaven is..."
+            },
+            {
+                start: 115, end: 125,
+                original: "[Juliet] O Romeo, Romeo, wherefore art thou Romeo? Deny thy father and refuse thy name, or, if thou wilt not, be but sworn my love, and I'll no longer be a Capulet.",
+                translation: "[Juliet] Oh Romeo, Romeo, why must you be Romeo? Reject your father and your family name, or, if you won't, just swear you love me, and I will no longer be a Capulet."
+            },
+            {
+                start: 126, end: 127,
+                original: "[Romeo] Shall I hear more, or shall I speak at this?",
+                translation: "[Romeo] Should I listen for more, or should I speak now?"
+            },
+            {
+                start: 128, end: 140,
+                original: "[Juliet] 'Tis but thy name that is my enemy. What's Montague? It is nor hand, nor foot, nor arm, nor face, nor any other part belonging to a man.",
+                translation: "[Juliet] It's only your name that is my enemy. What is a Montague? It isn't a hand, or a foot, or an arm, or a face, or any other part of a man."
+            },
+            {
+                start: 141, end: 146,
+                original: "[Juliet] O, be some other name! What's in a name?",
+                translation: "[Juliet] Oh, have some other name! What's so important about a name?"
+            },
+            {
+                start: 147, end: 149,
+                original: "[Juliet] That which we call a rose by any other word would smell as sweet.",
+                translation: "[Juliet] A rose, even if we called it something else, would still smell as sweet."
+            },
+            {
+                start: 150, end: 157,
+                original: "[Juliet] So Romeo would, were he not Romeo called, retain that dear perfection which he owes without that title.",
+                translation: "[Juliet] It is the same for Romeo; if he weren't called Romeo, he would still keep that wonderful perfection he has without that name."
+            },
+            {
+                start: 158, end: 164,
+                original: "[Juliet] Romeo, doff thy name and for thy name, which is no part of thee, take all myself.",
+                translation: "[Juliet] Romeo, get rid of your name, and in exchange for that name, which isn't even a real part of you, take all of me."
+            },
+            {
+                start: 165, end: 170,
+                original: "[Romeo] I take thee at thy word. Call me but love, and I'll be new baptized. Henceforth I never will be Romeo.",
+                translation: "[Romeo] I believe what you say. Just call me 'love,' and I will be newly christened. From now on, I will never be Romeo again."
+            }
+        ];
+
+        let lastSubtitle = null;
+
+        video.addEventListener('timeupdate', () => {
+            const currentTime = video.currentTime;
+            let currentSubtitle = null;
+
+            for (const subtitle of subtitles) {
+                if (currentTime >= subtitle.start && currentTime <= subtitle.end) {
+                    currentSubtitle = subtitle;
+                    break;
+                }
+            }
+
+            if (currentSubtitle !== lastSubtitle) {
+                if (currentSubtitle) {
+                    originalTextElement.innerHTML = currentSubtitle.original;
+                    translationTextElement.innerHTML = currentSubtitle.translation;
+                } else {
+                    originalTextElement.innerHTML = "";
+                    translationTextElement.innerHTML = "";
+                }
+                lastSubtitle = currentSubtitle;
+            }
+        });
+    </script>
+<!-- ===== BELOW: Lesson Flow Activities (styles isolated via iframes) ===== -->
+<!-- We keep the original top title and R&J video intact. All new sections come after. -->
+<style>
+.section-wrap{width:90%;max-width:1000px;margin:24px auto 40px auto;text-align:left}
+.section-wrap h2{color:#800020;font-family:inherit;margin:0 0 8px 0}
+.section-wrap p.lead{color:#444;margin:0 0 12px 0}
+iframe.activity{width:100%;height:900px;border:1px solid #ddd;border-radius:12px;background:#fff}
+footer.site-footer{margin:50px auto 20px auto;text-align:center;color:#333}
+</style>
+<div class="section-wrap" id="hook">
+<h2>1) 🎬💬 Hook &amp; Context — Puppy Love Trailer</h2>
+<p class="lead">👀 Watch for <b>obstacles</b>, <b>labels</b>, <b>people’s opinions</b>, <b>impulsive choices</b>, and <b>strong emotions</b>. Then connect to the story of <i>Romeo &amp; Juliet</i> that you talked about at the beginning of the lesson! 💞🧠</p>
+<div style="margin:20px auto; width:80%; max-width:800px; border:15px solid #800020; box-sizing:border-box;">
+<video controls="" style="width:100%;">
+<source src="puppy.mp4" type="video/mp4"/>
+      Your browser does not support the video tag.
+    </video>
+</div>
+<iframe class="activity" src="1 problems-checklist.html" title="✅ Trailer → Romeo &amp; Juliet Connection Checklist"></iframe>
+</div>
+<div class="section-wrap" id="code-breaker">
+<h2>2) 🧩📜 Code Breaker — Balcony Scene Matching</h2>
+<p class="lead">🔎 Use the <b>title &amp; video at the very top</b> when you reach this step. Match metaphors to meanings as a whole class! 🌞🌙⭐🧤🌹</p>
+<iframe class="activity" src="2 phase 2.html" title="🧩 Balcony Scene Matching"></iframe>
+</div>
+<div class="section-wrap" id="plato-excerpt">
+<h2 style="font-size: 1.3em;">🧠 Step 3: What Does Plato Say About Love?</h2>
+</div>
+<script>
+(function(){
+  const lines = [
+    {t:7, txt:"Ah, romantic love -"},
+    {t:8, txt:"beautiful and intoxicating,"},
+    {t:10, txt:"heartbreaking and soul-crushing,"},
+    {t:13, txt:"often all at the same time."},
+    {t:15, txt:"Why do we choose to put ourselves through its emotional wringer?"},
+    {t:18, txt:"Does love make our lives meaningful,"},
+    {t:21, txt:"or is it an escape from our loneliness and suffering?"},
+    {t:24, txt:"Is love a disguise for our sexual desire,"},
+    {t:26, txt:"or a trick of biology to make us procreate?"},
+    {t:30, txt:"Is it all we need?"},
+    {t:32, txt:"Do we need it at all?"},
+    {t:34, txt:"If romantic love has a purpose,"},
+    {t:36, txt:"neither science nor psychology has discovered it yet."},
+    {t:39, txt:"But over the course of history,"},
+    {t:41, txt:"some of our most respected philosophers have put forward some intriguing theories."},
+    {t:46, txt:"Love makes us whole, again."},
+    {t:49, txt:"The ancient Greek philosopher Plato"},
+    {t:51, txt:"explored the idea that we love in order to become complete."},
+    {t:55, txt:"In his \"Symposium\", he wrote about a dinner party,"},
+    {t:58, txt:"at which Aristophanes, a comic playwright,"},
+    {t:61, txt:"regales the guests with the following story:"},
+    {t:64, txt:"humans were once creatures with four arms, four legs, and two faces."},
+    {t:70, txt:"One day, they angered the gods,"},
+    {t:72, txt:"and Zeus sliced them all in two."},
+    {t:76, txt:"Since then, every person has been missing half of him or herself."},
+    {t:81, txt:"Love is the longing to find a soulmate who'll make us feel whole again,"},
+    {t:86, txt:"or, at least, that's what Plato believed a drunken comedian would say at a party."}
+  ];
+  for(let i=0;i<lines.length;i++){ lines[i].end = (i<lines.length-1) ? (lines[i+1].t - 0.08) : (lines[i].t + 4); }
+  const v = document.getElementById('platoVid');
+  const out = document.getElementById('plato-line');
+  let last = -1;
+  function tick(){
+    const ct = v.currentTime || 0;
+    let idx = -1;
+    for(let i=0;i<lines.length;i++){ if(ct>=lines[i].t && ct<=lines[i].end){ idx=i; break; } }
+    if(idx!==last){ out.textContent = (idx>=0) ? lines[idx].txt : ""; last = idx; }
+    if(!v.paused && !v.ended) requestAnimationFrame(tick);
+  }
+  v.addEventListener('play', ()=> requestAnimationFrame(tick));
+  v.addEventListener('seeked', ()=>{ last=-1; });
+})();
+</script>
+<div class="section-wrap" id="plato-match">
+<h2>3b) 🔤✅ Plato on Love — Vocabulary Match</h2>
+<iframe class="activity" src="3 plato.html" title="🔤 Plato Vocabulary Match"></iframe>
+</div>
+<div class="section-wrap" id="poster-builder">
+<h2 style="font-size: 1.3em;">🖼️ Step 4: Group Poster — Love &amp; Labels Then &amp; Now</h2>
+<div>
+<ol>
+<li>Work with your group to make a <strong>mini-poster</strong> that includes:
+        <ul>
+<li>The philosopher’s idea in your own words 📝</li>
+<li>1–2 <strong>Romeo &amp; Juliet</strong> quotes 🎭 from the balcony scene that connect to this idea</li>
+<li>A <strong>modern teenage example</strong> (you can use <em>Puppy Love</em> 🎥)</li>
+<li>At least two <strong>opinion phrases</strong> (e.g., “I think…”, “In my opinion…”, “I see it differently because…”)</li>
+</ul>
+</li>
+<li>Use the on-screen poster builder to type your group’s work.</li>
+<li>Choose your <strong>group name</strong> and <strong>date</strong> from the dropdown and calendar.</li>
+<li>Print your poster 🖨️ when finished — it will only print your group’s work.</li>
+</ol>
+<p><em>💡 Tip:</em> Be creative! Imagine your poster is going to be shown at a school exhibition.</p>
+</div><iframe class="activity" src="4 poster.html" title="🖨️ Mini-Poster Builder"></iframe>
+</div>
+<footer class="site-footer">
+<p>✨✍️ Devised by Panagiotis Domvros, English and Drama Teacher, All Rights Reserved ✍️✨</p>
+</footer>
+<div class="section-wrap" id="feedback">
+<h2>5) 📝 General Feedback</h2>
+<iframe class="activity" src="5general_feedback.html" style="height:1000px" title="📝 Lesson Feedback"></iframe>
+</div>
+<!-- ===== LESSON PLAN BUTTON + MODAL (Password: teacher) ===== -->
+<style>
+  #lp-btn {
+    position: fixed; top: 12px; right: 12px; z-index: 9999;
+    background: #A0522D; /* cinnamon */
+    color: #fff; font-weight: 800; border: 0; border-radius: 999px;
+    padding: 10px 14px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,.15);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  #lp-btn:hover { filter: brightness(1.03); transform: translateY(-1px); }
+
+  #lp-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,.5);
+    display: none; align-items: center; justify-content: center; z-index: 9998;
+  }
+  #lp-modal {
+    width: min(940px, 92vw); max-height: 88vh; overflow: auto;
+    background: #fff; border-radius: 16px; border: 1px solid #e5e7eb;
+    box-shadow: 0 20px 50px rgba(0,0,0,.25);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  #lp-head {
+    position: sticky; top: 0; z-index: 1;
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    padding: 14px 16px; background: #fff; border-bottom: 1px solid #ececec;
+  }
+  #lp-title { margin: 0; font-size: 1.2rem; font-weight: 800; color: #A0522D; }
+  #lp-actions { display: flex; gap: 8px; }
+  .lp-btn {
+    border: 0; border-radius: 10px; padding: 8px 12px; font-weight: 700; cursor: pointer;
+  }
+  .lp-print { background: #111827; color: #fff; }
+  .lp-close { background: #e5e7eb; color: #111; }
+  #lp-body { padding: 14px 18px 18px; }
+  #lp-body p, #lp-body li { line-height: 1.5; }
+  #lp-body p { text-align: justify; }
+  #lp-body h2, #lp-body h3 { color: #111; margin: 14px 0 6px; }
+  #lp-body .lp-subtle { color: #444; }
+  #lp-footer {
+    padding: 12px 16px 16px; border-top: 1px solid #ececec; text-align: center; color: #333;
+  }
+  @media (max-width: 500px) {
+    #lp-title { font-size: 1rem; }
+    .lp-btn { padding: 8px 10px; }
+  }
+</style>
+<button id="lp-btn" title="Open Lesson Plan">📘 Lesson Plan</button>
+<div aria-hidden="true" aria-labelledby="lp-title" id="lp-overlay" role="dialog">
+<div id="lp-modal">
+<div id="lp-head">
+<h1 id="lp-title">📘 What’s in a Name? — Love, Labels &amp; Teenage Relationships</h1>
+<div id="lp-actions">
+<button class="lp-btn lp-print" id="lp-print" title="Print this plan">🖨️ Print</button>
+<button class="lp-btn lp-close" id="lp-close" title="Close">✖️ Close</button>
+</div>
+</div>
+<div id="lp-body">
+<p class="lp-subtle"><b>Class profile:</b> Age 14 • Level B1 (Greek students) • 25 students in 5 groups • Time 40′</p>
+<p class="lp-subtle"><b>Resources:</b> Puppy Love trailer • R&amp;J Balcony Scene (video + original/modern subs) • TED-Ed Why Do We Love? (Plato excerpt) • Printed balcony extracts (same 5 lines) • A3 &amp; markers • Projected HTML activities</p>
+<h2>🎯 Objectives</h2>
+<ul>
+<li>Identify links between a modern teen romance and <i>Romeo &amp; Juliet</i>.</li>
+<li>Interpret metaphor and symbolism in the balcony scene.</li>
+<li>Compare Shakespeare’s view of love with modern philosophy.</li>
+<li>Use opinion language and vocabulary about love, relationships, identity.</li>
+<li>Reflect on how names/labels/identity influence relationships.</li>
+</ul>
+<h2>🗂️ Lesson Stages (40′ total)</h2>
+<h3>1) 🎬💬 Hook &amp; Context (4′) — Text User</h3>
+<p><b>Step 1 – Cultural Check (0:00–0:45):</b> “Do you know who Romeo and Juliet were?” Quick responses → Summarise: “Famous teenage couple, enemies’ families; love, obstacles, big decisions.”</p>
+<p><b>Step 2 – Immediate Immersion (0:45–2:15):</b> Play <b>Puppy Love</b> trailer (no intro). Students notice relationships, feelings, actions.</p>
+<p><b>Step 3 – First Reactions (2:15–2:45):</b> “What kind of relationship?” “What emotions?” Keep it spontaneous.</p>
+<p><b>Step 4 – Guided Connection (2:45–3:30):</b> “What do these characters have in common with R&amp;J?” Guide to obstacles, others’ opinions, impulsive choices, strong emotions.</p>
+<p><b>Step 5 – Interactive Checklist (3:30–4:00):</b> Project the HTML checklist (true + distractors). Instant green/red feedback; purpose = spot accurate thematic links.</p>
+<h3>2) 🧩📜 Code Breaker: Shakespeare Scene (6′) — Code Breaker</h3>
+<p><b>Setup:</b> Show balcony scene (original + modern subtitles). Brief context per line.</p>
+<p><b>Activity:</b> Display HTML Code Breaker (5 extracts → meaning). Same 5 for all → whole-class. Groups confer → nominate. Instant full-card green/red. Teacher reinforces and links back to the hook themes.</p>
+<h3>3) 🧠❤️ Modern Perspectives (Plato excerpt) — Meaning Maker (7′)</h3>
+<p>Play/recap TED-Ed Plato excerpt (Aristophanes’ myth: the “missing half”).</p>
+<ul>
+<li>Run the <b>Plato Vocabulary Match</b> (12⇄12, instant feedback, live score, reset).</li>
+<li><b>All groups:</b> write 3 original sentences using 3 different terms.</li>
+<li><b>Differentiation:</b>
+<ul>
+<li>G1: Sketch humans before the split (label 2 features).</li>
+<li>G2: Sketch a modern “missing half” moment + 1 caption with a target term.</li>
+<li>G3: 2–3 media examples using soulmate/missing-half; 1 sentence each.</li>
+<li>G4: 3 pros &amp; 3 cons of the “missing half” idea (use opinion starters).</li>
+<li>G5: “Modern Meme for Plato” — a one-line teen-friendly caption with a target term.</li>
+</ul>
+</li>
+</ul>
+<h3>4) 🖼️🗣️ Group Task: Love &amp; Labels Then/Now (15′) — Text Analyst</h3>
+<p><b>Aim:</b> Connect Plato → R&amp;J → modern teen experiences (love, labels, identity).</p>
+<p><b>Step 1 (1′):</b> Launch the Mini-Poster Builder; explain 4 parts: Plato in our words • 1–2 balcony quotes that connect • a modern example (incl. Puppy Love or real life) • at least two opinion phrases.</p>
+<p><b>Step 2 (2′):</b> Scaffold: show quote bank &amp; word limits (40–60 words/section). Use opinion frames.</p>
+<p><b>Step 3 (10′):</b> Groups create posters. Teacher circulates: check Plato clarity, quote-to-claim fit, specific vocabulary, past↔present link.</p>
+<p><b>Step 4:</b> Timer ⏱️; completion meter goes green when all 4 parts done.</p>
+<p><b>Step 5 (2′):</b> Print/save posters. Optional: 2–3 quick shares or gallery walk.</p>
+<p><b>Assessment focus:</b> Understanding Plato • R&amp;J accuracy • Relevance to labels/identity • Opinion language clarity.</p>
+<h3>5) 🗣️ Presentations &amp; Class Discussion (6′)</h3>
+<p>Each group presents for ~1′. Class asks one follow-up. Teacher prompts: “Which philosopher’s idea is closest to your own view of love?”</p>
+<h3>6) 🎁 Wrap-up (2′)</h3>
+<p><b>Vocabulary recap:</b> jealous, perfection, reject, identity, stereotype, authentic love. <b>Feedback:</b> Students complete the feedback form.</p>
+</div>
+<div id="lp-footer">
+      ✨✍️ Devised by Panagiotis Domvros, English and Drama Teacher, All Rights Reserved ✍️✨
+    </div>
+</div>
+</div>
+<script>
+  (function(){
+    const btn = document.getElementById('lp-btn');
+    const ovl = document.getElementById('lp-overlay');
+    const closeBtn = document.getElementById('lp-close');
+    const printBtn = document.getElementById('lp-print');
+
+    function openModal(){
+      ovl.style.display = 'flex';
+      ovl.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(){
+      ovl.style.display = 'none';
+      ovl.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    btn.addEventListener('click', () => {
+      if (sessionStorage.getItem('lp-ok') === '1') { openModal(); return; }
+      const pw = prompt('Enter teacher password:');
+      if (pw === 'teacher') {
+        sessionStorage.setItem('lp-ok','1');
+        openModal();
+      } else if (pw !== null) {
+        alert('Incorrect password.');
+      }
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    ovl.addEventListener('click', (e) => { if (e.target === ovl) closeModal(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && ovl.style.display==='flex') closeModal(); });
+
+    printBtn.addEventListener('click', () => {
+      const title = document.getElementById('lp-title').textContent.trim();
+      const bodyHTML = document.getElementById('lp-body').innerHTML;
+      const footHTML = document.getElementById('lp-footer').innerHTML;
+      const html = `<!DOCTYPE html><html><head><meta charset="utf-8">
+      <title>${title}</title>
+      <style>
+        body{{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:#111;margin:24px}}
+        h1{{margin:0 0 12px;color:#A0522D}}
+        h2,h3{{margin:14px 0 6px;color:#111}}
+        p,li{{line-height:1.5; text-align:justify}}
+        ul{{margin:0 0 0 1.1em; padding:0}}
+        #foot{{margin-top:18px; text-align:center; color:#333; border-top:1px solid #ececec; padding-top:10px}}
+        @page{{size:auto;margin:16mm}}
+      </style>
+      </head><body>
+        <h1>${title}</h1>
+        ${bodyHTML}
+        <div id="foot">${footHTML}</div>
+        <script>window.onload=()=>window.print();<\/script>
+      </body></html>`;
+
+      const iframe = document.createElement('iframe');
+      iframe.style.position = 'fixed'; iframe.style.right = '0'; iframe.style.bottom = '0';
+      iframe.style.width = '0'; iframe.style.height = '0'; iframe.style.border = '0'; iframe.style.visibility = 'hidden';
+      document.body.appendChild(iframe);
+      const doc = iframe.contentWindow.document;
+      doc.open(); doc.write(html); doc.close();
+      setTimeout(() => { iframe.contentWindow.focus(); iframe.contentWindow.print(); setTimeout(()=>document.body.removeChild(iframe), 500); }, 50);
+    });
+  })();
+</script>
+<!-- ===== /LESSON PLAN BUTTON + MODAL ===== -->
+</body>
+</html>
